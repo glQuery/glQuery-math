@@ -3,8 +3,10 @@
  * glQuery-math is free, public domain software (http://creativecommons.org/publicdomain/zero/1.0/)
  * Originally created by Rehno Lindeque of http://www.mischievousmeerkat.com
  */
+// Define a local copy of glQuery
+var glQueryMath = this != null? this : window;
 // Module for setting 3x3 matrix values
-this.setMatrix3AxisRotation = function(axis, angle) {
+glQueryMath.setMatrix3AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -24,7 +26,7 @@ this.setMatrix3AxisRotation = function(axis, angle) {
     2 * (xz + yw),     2 * (y*z - xw),    1 - 2 * (xx + yy)];
 };
 
-this.setMatrix3Identity = function() {
+glQueryMath.setMatrix3Identity = function() {
   return [
     1.0, 0.0, 0.0,
     0.0, 1.0, 0.0,
@@ -32,7 +34,7 @@ this.setMatrix3Identity = function() {
 };
 
 // Module for setting 4x4 matrix values
-this.setMatrix4AxisRotation = function(axis, angle) {
+glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -53,7 +55,7 @@ this.setMatrix4AxisRotation = function(axis, angle) {
     0,                 0,                 0,                  1];
 };
 
-this.setMatrix4Identity = function() {
+glQueryMath.setMatrix4Identity = function() {
   return [
     1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,

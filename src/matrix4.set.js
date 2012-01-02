@@ -1,5 +1,5 @@
 // Module for setting 4x4 matrix values
-this.setMatrix4AxisRotation = function(axis, angle) {
+glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -20,7 +20,7 @@ this.setMatrix4AxisRotation = function(axis, angle) {
     0,                 0,                 0,                  1];
 };
 
-this.setMatrix4Identity = function() {
+glQueryMath.setMatrix4Identity = function() {
   return [
     1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,

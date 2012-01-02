@@ -1,5 +1,5 @@
 // Module for setting 3x3 matrix values
-this.setMatrix3AxisRotation = function(axis, angle) {
+glQueryMath.setMatrix3AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -19,7 +19,7 @@ this.setMatrix3AxisRotation = function(axis, angle) {
     2 * (xz + yw),     2 * (y*z - xw),    1 - 2 * (xx + yy)];
 };
 
-this.setMatrix3Identity = function() {
+glQueryMath.setMatrix3Identity = function() {
   return [
     1.0, 0.0, 0.0,
     0.0, 1.0, 0.0,

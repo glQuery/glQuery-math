@@ -1,10 +1,10 @@
 
 // Extend glQuery if it is defined
 if (glQuery != null)
-  for(key in this)
+  for(var key in glQueryMath)
     if (glQuery[key] == null)
-      glQuery[key] = this[key];
-return this;
+      glQuery[key] = glQueryMath[key];
+return glQueryMath;
 
 })();
 

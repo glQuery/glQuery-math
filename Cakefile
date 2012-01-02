@@ -62,7 +62,7 @@ minify = (callback) -> ->
     tool = if exists then 'node_modules/.bin/uglifyjs' else 'uglifyjs'
     path.exists 'build/glquery.math.js', (exists) ->
       if exists
-        exec "#{tool} build/glquery.math.js > build/glquery.math.min.js", (err, stdout, stderr) ->
+        exec "#{tool} --no-copyright build/glquery.math.js > build/glquery.math.min.js", (err, stdout, stderr) ->
           throw err if err
           console.log stdout + stderr
           callback() if callback?

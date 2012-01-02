@@ -1,9 +1,5 @@
-/*
- * glQuery-math - A math module from a fluent WebGL engine (https://github.com/glQuery)
- * glQuery-math is free, public domain software (http://creativecommons.org/publicdomain/zero/1.0/)
- * Originally created by Rehno Lindeque of http://www.mischievousmeerkat.com
- */
-
+var glQueryMath = (function() {
+"use strict";
 
 
 
@@ -68,3 +64,14 @@ this.setMatrix4Identity = function() {
     0.0, 0.0, 1.0, 0.0,
     0.0, 0.0, 0.0, 1.0];
 };
+
+
+
+  // Extend glQuery if it is defined
+  if (glQuery != null)
+    for(key in this)
+      if (glQuery[key] == null)
+        glQuery[key] = this[key];
+  return this;
+})();
+

@@ -79,8 +79,8 @@ wrap = (callback) ->
     # Maybe (() -> IO) -> () -> IO
     writeMath = (callback) -> (concatFiles ['src/header.js', "build/#{filenameMath}"]) (writeFile "dist/#{filenameMath}") callback
     writeMin = (callback) -> (concatFiles ['src/header.js', "build/#{filenameMin}"]) (writeFile "dist/#{filenameMin}") callback
-    writeModuleMath = (callback) -> (concatFiles ['src/wrapped.header.js', "build/#{filenameMath}", 'src/wrapped.footer.js']) (writeFile 'dist/glquery.math.module.js') callback
-    writeModuleMin = (callback) -> (concatFiles ['src/wrapped.header.js', "build/#{filenameMin}", 'src/wrapped.footer.js']) (writeFile 'dist/glquery.math.module.min.js') callback
+    writeModuleMath = (callback) -> (concatFiles ['src/module.header.js', "build/#{filenameMath}", 'src/module.footer.js']) (writeFile 'dist/glquery.math.module.js') callback
+    writeModuleMin = (callback) -> (concatFiles ['src/module.header.js', "build/#{filenameMin}", 'src/module.footer.js']) (writeFile 'dist/glquery.math.module.min.js') callback
 
     # Maybe (() -> IO) -> () -> IO
     wrapMath = (callback) -> writeMath (logDone 'glquery.math.js') callback

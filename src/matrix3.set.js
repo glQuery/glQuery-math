@@ -1,5 +1,5 @@
 // Module for setting 3x3 matrix values
-setMatrix3AxisRotation = function(axis, angle) {
+this.setMatrix3AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -16,5 +16,12 @@ setMatrix3AxisRotation = function(axis, angle) {
   return [
     1 - 2 * (yy + zz), 2 * (xy + zw),     2 * (xz - yw),
     2 * (xy - zw),     1 - 2 * (xx + zz), 2 * (zy + xw),
-    2 * (xz + yw),     2 * (y*z - xw),     1 - 2 * (xx + yy)];
+    2 * (xz + yw),     2 * (y*z - xw),    1 - 2 * (xx + yy)];
+};
+
+this.setMatrix3Identity = function() {
+  return [
+    1.0, 0.0, 0.0,
+    0.0, 1.0, 0.0,
+    0.0, 0.0, 1.0];
 };

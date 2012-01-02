@@ -3,14 +3,8 @@
  * glQuery-math is free, public domain software (http://creativecommons.org/publicdomain/zero/1.0/)
  * Originally created by Rehno Lindeque of http://www.mischievousmeerkat.com
  */
-
-
-
 var glQueryMath = (function() {
 "use strict";
-
-
-
 
 // Module for setting 3x3 matrix values
 this.setMatrix3AxisRotation = function(axis, angle) {
@@ -39,9 +33,6 @@ this.setMatrix3Identity = function() {
     0.0, 1.0, 0.0,
     0.0, 0.0, 1.0];
 };
-
-
-
 
 // Module for setting 4x4 matrix values
 this.setMatrix4AxisRotation = function(axis, angle) {
@@ -74,12 +65,12 @@ this.setMatrix4Identity = function() {
 };
 
 
+// Extend glQuery if it is defined
+if (glQuery != null)
+  for(key in this)
+    if (glQuery[key] == null)
+      glQuery[key] = this[key];
+return this;
 
-  // Extend glQuery if it is defined
-  if (glQuery != null)
-    for(key in this)
-      if (glQuery[key] == null)
-        glQuery[key] = this[key];
-  return this;
 })();
 

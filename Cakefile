@@ -39,7 +39,7 @@ concatSrcFiles = (files) ->
 
 # Filename -> Maybe (() -> IO) -> String -> () -> IO
 writeFile = (filename) -> (callback) -> (text) -> ->
-  fs.writeFile "#{filename}", text.join('\n\n'), 'utf8', (err) ->
+  fs.writeFile "#{filename}", text.join(''), 'utf8', (err) ->
     throw err if err
     callback() if callback?
 

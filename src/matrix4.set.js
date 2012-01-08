@@ -1,4 +1,6 @@
 // Module for setting 4x4 matrix values
+
+// Axis-angle rotation
 glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
@@ -20,6 +22,7 @@ glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
     0,                 0,                 0,                  1];
 };
 
+// Matrix identity
 glQueryMath.setMatrix4Identity = function() {
   return [
     1.0, 0.0, 0.0, 0.0,
@@ -27,4 +30,18 @@ glQueryMath.setMatrix4Identity = function() {
     0.0, 0.0, 1.0, 0.0,
     0.0, 0.0, 0.0, 1.0];
 };
+
+// Right-Handed orthogonal projection matrix
+glQueryMath.setMatrix4Ortho = function(left, right, bottom, top, near, far) {
+  var x = left - right,
+      y = bottom - top,
+      z = near - far;
+  return [
+    -2.0 / x,           0.0,                0.0,              0.0,
+    0.0,               -2.0 / y,            0.0,              0.0,
+    0.0,                0.0,                2.0 / z,          0.0,
+    (left + right) / x, (top + bottom) / y, (far + near) / z, 1.0
+  ];
+};
+
 

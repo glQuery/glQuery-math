@@ -42,6 +42,6 @@ glQueryMath.vec3.length = function(a) {
   return Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
 };
 glQueryMath.vec3.normalize = function(dest,a) {
-  return glQueryMath.vec3.mul(dest, a, glQueryMath.vec3.length(a));
+  return glQueryMath.vec3.div(dest, a, glQueryMath.vec3.length(a));
 };
 

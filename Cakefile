@@ -5,6 +5,9 @@ path   = require 'path'
 libFiles  = [
   # omit src/ and .js to make the below lines a little shorter
   'core'
+  'vector2'
+  'vector3'
+  'vector4'
   'matrix3'
   'matrix3.set'
   'matrix4'

@@ -1,7 +1,7 @@
 // Module for setting 4x4 matrix values
 
 // Axis-angle rotation matrix using the right hand rule
-glQueryMath.matrix4.newAxisRotation = function(axis, angle) {
+m4.newAxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -23,7 +23,7 @@ glQueryMath.matrix4.newAxisRotation = function(axis, angle) {
 };
 
 // Matrix identity
-glQueryMath.matrix4.newIdentity = function() {
+m4.newIdentity = function() {
   return [
     1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
@@ -31,11 +31,11 @@ glQueryMath.matrix4.newIdentity = function() {
     0.0, 0.0, 0.0, 1.0];
 };
 
-glQueryMath.matrix4.newRows = function(r0, r1, r2, r3) {
+m4.newRows = function(r0, r1, r2, r3) {
   return [].concat(r0, r1, r2, r3);
 }
 
-glQueryMath.matrix4.newColumns = function(c0, c1, c2, c3) {
+m4.newColumns = function(c0, c1, c2, c3) {
   return [
     c0[0], c1[0], c2[0],c3[0],
     c0[1], c1[1], c2[1],c3[1],
@@ -45,7 +45,7 @@ glQueryMath.matrix4.newColumns = function(c0, c1, c2, c3) {
 }
 
 // Right-handed orthogonal projection matrix
-glQueryMath.matrix4.newOrtho = function(left, right, bottom, top, near, far) {
+m4.newOrtho = function(left, right, bottom, top, near, far) {
   var x = left - right,
   y = bottom - top,
   z = near - far;
@@ -58,7 +58,7 @@ glQueryMath.matrix4.newOrtho = function(left, right, bottom, top, near, far) {
 };
 
 // Right-handed look-at matrix
-glQueryMath.matrix4.newLookAt = function(eye, target, up) {
+m4.newLookAt = function(eye, target, up) {
   // TODO: See if it would be more efficient to try and build the matrix
   //       by rows instead of by columns as is done presently
   var x = MathMemoryPool.vector4[0], 
@@ -66,22 +66,22 @@ glQueryMath.matrix4.newLookAt = function(eye, target, up) {
   z = MathMemoryPool.vector4[2],
   w = MathMemoryPool.vector4[3];
 
-  glQueryMath.vec3.sub(z, eye, target);
-  glQueryMath.vec3.cross(x, up, z);
+  gl.vec3.sub(z, eye, target);
+  gl.vec3.cross(x, up, z);
 
   // (probably best to normalize z and x after cross product for best numerical accuracy)
-  glQueryMath.vec3.normalize(x, x);
-  glQueryMath.vec3.normalize(z, z);
+  gl.vec3.normalize(x, x);
+  gl.vec3.normalize(z, z);
 
   // (no need to normalize y because x and z was already normalized)
-  glQueryMath.vec3.cross(y, z, x);
+  gl.vec3.cross(y, z, x);
   
-  x[3] = -glQueryMath.vec3.dot(x, eye);
-  y[3] = -glQueryMath.vec3.dot(y, eye);
-  z[3] = -glQueryMath.vec3.dot(z, eye);
+  x[3] = -gl.vec3.dot(x, eye);
+  y[3] = -gl.vec3.dot(y, eye);
+  z[3] = -gl.vec3.dot(z, eye);
   w[0] = 0.0;
   w[1] = 0.0;
   w[2] = 0.0;
   w[3] = 1.0;
-  return glQueryMath.matrix4.newColumns(x,y,z,w);
+  return m4.newColumns(x,y,z,w);
 };

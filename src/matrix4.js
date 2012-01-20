@@ -1,1 +1,1 @@
-glQueryMath.matrix4 = {};
+var m4 = gl.matrix4 = {};

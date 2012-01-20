@@ -1,7 +1,7 @@
 // Module for setting 4x4 matrix values
 
 // Axis-angle rotation matrix using the right hand rule
-glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
+glQueryMath.matrix4.newAxisRotation = function(axis, angle) {
   var
   // Convert rotation to quaternion representation
   length = Math.sqrt(axis[0]*axis[0], axis[1]*axis[1], axis[2]*axis[2]),
@@ -23,7 +23,7 @@ glQueryMath.setMatrix4AxisRotation = function(axis, angle) {
 };
 
 // Matrix identity
-glQueryMath.setMatrix4Identity = function() {
+glQueryMath.matrix4.newIdentity = function() {
   return [
     1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
@@ -31,11 +31,11 @@ glQueryMath.setMatrix4Identity = function() {
     0.0, 0.0, 0.0, 1.0];
 };
 
-glQueryMath.setMatrix4Rows = function(r0, r1, r2, r3) {
+glQueryMath.matrix4.newRows = function(r0, r1, r2, r3) {
   return [].concat(r0, r1, r2, r3);
 }
 
-glQueryMath.setMatrix4Columns = function(c0, c1, c2, c3) {
+glQueryMath.matrix4.newColumns = function(c0, c1, c2, c3) {
   return [
     c0[0], c1[0], c2[0],c3[0],
     c0[1], c1[1], c2[1],c3[1],
@@ -45,7 +45,7 @@ glQueryMath.setMatrix4Columns = function(c0, c1, c2, c3) {
 }
 
 // Right-handed orthogonal projection matrix
-glQueryMath.setMatrix4Ortho = function(left, right, bottom, top, near, far) {
+glQueryMath.matrix4.newOrtho = function(left, right, bottom, top, near, far) {
   var x = left - right,
   y = bottom - top,
   z = near - far;
@@ -58,7 +58,7 @@ glQueryMath.setMatrix4Ortho = function(left, right, bottom, top, near, far) {
 };
 
 // Right-handed look-at matrix
-glQueryMath.setMatrix4LookAt = function(eye, target, up) {
+glQueryMath.matrix4.newLookAt = function(eye, target, up) {
   // TODO: See if it would be more efficient to try and build the matrix
   //       by rows instead of by columns as is done presently
   var x = MathMemoryPool.vector4[0], 
@@ -83,5 +83,5 @@ glQueryMath.setMatrix4LookAt = function(eye, target, up) {
   w[1] = 0.0;
   w[2] = 0.0;
   w[3] = 1.0;
-  return glQueryMath.setMatrix4Columns(x,y,z,w);
+  return glQueryMath.matrix4.newColumns(x,y,z,w);
 };

@@ -9,9 +9,9 @@ libFiles  = [
   'vector3'
   'vector4'
   'matrix3'
-  'matrix3.set'
+  'matrix3.new'
   'matrix4'
-  'matrix4.set'
+  'matrix4.new'
 ]
 
 ###

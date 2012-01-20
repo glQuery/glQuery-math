@@ -1,6 +1,5 @@
 // Define a local copy of glQuery
-var glQueryMath = this != null? this : window,
-MathMemoryPool = {
+var MathMemoryPool = {
   matrix4: [
     [0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0], 
     [0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0],
